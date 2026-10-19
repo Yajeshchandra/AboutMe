@@ -15,9 +15,9 @@ assert.ok(blog.includes('No blog posts yet'), 'Graceful empty blog');
 assert.ok(!hrefs.includes('/blog'), 'Empty blog hidden from dock');
 await get('/blog/api-design-principles', 404);
 await get('/blog/nonexistent/opengraph-image', 404);
-assert.ok(!hrefs.includes('https://github.com/Prabhat-Kr-Sahu/tempest_local_guard'), 'Unavailable source hidden');
-assert.ok(!hrefs.includes('https://github.com/Yajeshchandra/MatBot'), 'Unavailable source hidden');
-for (const path of ['/icon.svg', '/robots.txt', '/sitemap.xml', '/projects/matbot.png', '/projects/bert-training.png']) await get(path);
+assert.ok(hrefs.includes('https://github.com/Prabhat-Kr-Sahu/tempest_local_guard'), 'User-confirmed Tempest source shown');
+assert.ok(hrefs.includes('https://github.com/Yajeshchandra/matbot'), 'User-confirmed MatBot source shown');
+for (const path of ['/icon.svg', '/robots.txt', '/sitemap.xml', '/projects/indexit.svg', '/projects/tempest.svg', '/projects/matbot.svg', '/projects/price-prediction.svg']) await get(path);
 for (const path of ['/opengraph-image', '/blog/opengraph-image']) {const r = await get(path); assert.ok(r.headers.get('content-type')?.includes('image/png'), path); assert.ok((await r.arrayBuffer()).byteLength > 1000, path);}
 for (const src of new Set([...html.matchAll(/\ssrc="([^"]+)"/g)].map(m => m[1].replaceAll('&amp;', '&')).filter(s => s.startsWith('/')))) await get(src);
 console.log('PASS: home content, unique heading/IDs, navigation anchors, empty blog, removed sample route, assets, optimized images, favicon, sitemap, robots and Open Graph PNGs.');

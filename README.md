@@ -28,6 +28,7 @@ Edit src/data/resume.tsx. The Portfolio interface checks work, education, skill 
 
 - Set avatarUrl to a local photo in public/; empty means initials. Adjust avatarCrop for the CSS crop. The supplied original photo is preserved and served through Next.js image optimization.
 - Set resumeUrl near the top of the config to a PDF path or confirmed URL; empty means hidden.
+- Set indexitLiveUrl near the top of the config after IndexIt is deployed; empty keeps the live-demo button hidden and the project title linked to GitHub.
 - Confirm or change email and LinkedIn in contact. Empty social URLs are hidden.
 - Add project images under public/projects/ and update image. Missing media uses a consistent neutral placeholder.
 - Set hackathons to an empty array to hide Achievements. The original component is retained under its upstream filename.
@@ -48,6 +49,6 @@ Public resume PDF/URL and final domain. Confirm lead-only Team Deimos dates if y
 
 ## Verification
 
-See VALIDATION.md for executed checks and remaining browser-only checks. The compact original layout, dock, cards, themes and motion are retained; reduced-motion preferences and keyboard labels were added. Repository media is used for MatBot and BERT; other cards use placeholders.
+See VALIDATION.md for executed checks and remaining browser-only checks. The compact original layout, dock, cards, themes and motion are retained; reduced-motion preferences and keyboard labels were added. All four project cards use matching decorative vector covers; source and demo links appear beneath the card content.
 
-Tempest and MatBot source links are hidden because unauthenticated GitHub checks return 404. Restore their href and links entries when public source URLs are available. LinkedIn requires a manual visit to verify because it blocks automated checks.
+Tempest and MatBot use repository URLs explicitly confirmed by the user; unauthenticated public access has not been verified. LinkedIn requires a manual visit to verify because it blocks automated checks.

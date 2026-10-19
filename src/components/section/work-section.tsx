@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { DATA } from "@/data/resume";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
@@ -76,6 +76,17 @@ export default function WorkSection() {
               </div>
             </div>
           </AccordionTrigger>
+          {work.linkLabel && (
+            <a
+              href={work.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-11 md:ml-13 inline-flex w-fit items-center gap-1 text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {work.linkLabel}
+              <ArrowUpRight className="size-3" aria-hidden />
+            </a>
+          )}
           <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
             {work.description}
           </AccordionContent>

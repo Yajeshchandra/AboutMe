@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+ <title>MatBot code assistant concept illustration</title><desc>Decorative conceptual artwork, not an application screenshot or measured result.</desc>
+ <defs><radialGradient id="bg"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#EDF0F2"/></radialGradient><filter id="shadow" x="-35%" y="-35%" width="170%" height="190%"><feDropShadow dy="16" stdDeviation="20" flood-color="#8874AA" flood-opacity=".14"/></filter></defs>
+ <rect width="1200" height="720" fill="url(#bg)"/>
+ <ellipse cx="600" cy="565" rx="235" ry="22" fill="#8874AA" opacity=".05"/>
+ 
+ <g filter="url(#shadow)">
+  <path d="M370 209H756Q781 209 781 234V420Q781 445 756 445H454L370 500V445Q345 445 345 420V234Q345 209 370 209Z" fill="#FFF" stroke="#DFDAE6" stroke-width="2"/>
+  <circle cx="379" cy="242" r="6" fill="#D5CCE2"/><circle cx="401" cy="242" r="6" fill="#D5CCE2"/><circle cx="423" cy="242" r="6" fill="#D5CCE2"/>
+  <path d="M345 270H781" stroke="#EEEAF2" stroke-width="2"/>
+  <path d="M438 308L409 338L438 368M514 308L543 338L514 368M490 296L463 379" stroke="#8874AA" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M594 316H721M594 340H685M594 364H705" stroke="#D5CCE2" stroke-width="8" stroke-linecap="round"/>
+ </g>
+ <g filter="url(#shadow)">
+  <path d="M667 393H833Q857 393 857 417V509Q857 533 833 533H809V563L766 533H667Q643 533 643 509V417Q643 393 667 393Z" fill="#8874AA"/>
+  <circle cx="700" cy="462" r="9" fill="white"/><circle cx="750" cy="462" r="9" fill="white"/><circle cx="800" cy="462" r="9" fill="white"/>
+ </g>
+</svg>

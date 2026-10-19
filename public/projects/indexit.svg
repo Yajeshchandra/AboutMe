@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+ <title>IndexIt document indexing illustration</title><desc>Decorative conceptual artwork, not an application screenshot or measured result.</desc>
+ <defs><radialGradient id="bg"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#EDF0F2"/></radialGradient><filter id="shadow" x="-35%" y="-35%" width="170%" height="190%"><feDropShadow dy="16" stdDeviation="20" flood-color="#428575" flood-opacity=".14"/></filter></defs>
+ <rect width="1200" height="720" fill="url(#bg)"/>
+ <ellipse cx="600" cy="565" rx="235" ry="22" fill="#428575" opacity=".05"/>
+ 
+ <g transform="rotate(-10 600 360)" filter="url(#shadow)">
+  <rect x="411" y="160" width="310" height="400" rx="24" fill="#BCD0C9"/>
+  <rect x="441" y="145" width="310" height="400" rx="24" fill="#E0E9E4" stroke="#CFDBD5" stroke-width="2"/>
+ </g>
+ <g filter="url(#shadow)">
+  <rect x="456" y="155" width="310" height="400" rx="24" fill="#FFF" stroke="#E1E6E3" stroke-width="2"/>
+  <rect x="492" y="197" width="59" height="59" rx="14" fill="#428575"/>
+  <path d="M508 216H535M508 228H528M508 240H535" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M492 299H682M492 322H719M492 345H652" stroke="#D2DCD6" stroke-width="9" stroke-linecap="round"/>
+  <rect x="483" y="381" width="256" height="105" rx="12" fill="#E8F2EC"/>
+  <path d="M503 406H622M503 429H707M503 452H674" stroke="#85AA96" stroke-width="7" stroke-linecap="round"/>
+ </g>
+ <circle cx="759" cy="501" r="54" fill="#428575" stroke="#F0F2F0" stroke-width="8"/>
+ <path d="M737 501L752 516L781 485" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

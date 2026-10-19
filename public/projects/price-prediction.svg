@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+ <title>Product price prediction concept illustration</title><desc>Decorative conceptual artwork, not an application screenshot or measured result.</desc>
+ <defs><radialGradient id="bg"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#EDF0F2"/></radialGradient><filter id="shadow" x="-35%" y="-35%" width="170%" height="190%"><feDropShadow dy="16" stdDeviation="20" flood-color="#B88442" flood-opacity=".14"/></filter></defs>
+ <rect width="1200" height="720" fill="url(#bg)"/>
+ <ellipse cx="600" cy="565" rx="235" ry="22" fill="#B88442" opacity=".05"/>
+ 
+ <g filter="url(#shadow)">
+  <rect x="351" y="208" width="498" height="316" rx="28" fill="#FFF" stroke="#E8E1D6" stroke-width="2"/>
+  <path d="M392 469H807" stroke="#E9E3D9" stroke-width="3"/>
+  <rect x="409" y="391" width="48" height="76" rx="10" fill="#E8DBBF"/>
+  <rect x="484" y="343" width="48" height="124" rx="10" fill="#D5BA88"/>
+  <rect x="559" y="368" width="48" height="99" rx="10" fill="#E8DBBF"/>
+  <rect x="634" y="297" width="48" height="170" rx="10" fill="#B88442"/>
+  <rect x="709" y="325" width="48" height="142" rx="10" fill="#D5BA88"/>
+  <path d="M430 351L508 304L582 330L659 254L733 279" stroke="#947044" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#FFF" stroke="#947044" stroke-width="4"><circle cx="430" cy="351" r="7"/><circle cx="508" cy="304" r="7"/><circle cx="582" cy="330" r="7"/><circle cx="659" cy="254" r="7"/><circle cx="733" cy="279" r="7"/></g>
+ </g>
+ <g transform="rotate(16 811 224)" filter="url(#shadow)">
+  <path d="M742 167H849L894 220L849 273H742Q728 273 728 259V181Q728 167 742 167Z" fill="#B88442"/>
+  <circle cx="858" cy="220" r="9" fill="#F2EBE0"/>
+  <path d="M754 204H814M754 222H797M754 240H805" stroke="#F6EAD6" stroke-width="6" stroke-linecap="round"/>
+ </g>
+</svg>

@@ -20,7 +20,7 @@ Cloned https://github.com/magicuidesign/portfolio at 5ef12e4c8bd0de3e22e89c2181e
 - Tempest 200k+ nodes: resume claim only, no benchmark artifact inspected. Omitted from public copy.
 - Incremental Git-hash sync: design/resume describe it; current sync.py invokes graphify update --force and records branch/commit metadata. Do not claim demonstrated incremental speedups or unchanged-node retention.
 - Scalable graph processing: bounded path reconstruction exists; no measured scaling result claimed.
-- Amazon top 1% conflicts with README rank 219/~7000 (about top 3.1%). Neither percentage published.
+- Amazon top 1% conflicts with README rank 219/~7000 (about top 3.1%). Initially omitted; on 19 October 2026 the user explicitly corrected the result to top 1% and requested the achievement title "Amazon ML Code 2025". Published as user-attested; the README discrepancy remains unresolved.
 - README official SMAPE 45.45 vs body 45.44; validation 42.34 and MAE 9.27 are self-reported, not reproduced. Omit numeric results from cards.
 - Notebook fits quantile transform and oversamples before train/validation split; possible validation leakage. Weighted loss is defined but main training loop uses L1Loss. Do not describe weighted loss as the executed training objective.
 - No fictional blog articles or inherited hackathon history. Resume achievements may be included with resume provenance, without independently verified prize/rank claims.
@@ -33,7 +33,7 @@ GitHub API listed 33 public repositories. Forks/course examples are not assumed 
 - Public resume PDF/URL: not provided; configurable link remains hidden.
 - Production domain: set NEXT_PUBLIC_SITE_URL before public deployment.
 - Precise lead-only Team Deimos dates and individual Tempest ownership remain unspecified.
-- Real screenshots for projects without media: consistent labeled placeholders used.
+- All four current project cards have matching decorative vector covers. Robotics is represented under Team Deimos experience, with a visible Team GitHub link.
 
 ## Contact
 Email yajeshstan@gmail.com and LinkedIn https://www.linkedin.com/in/yajesh-chandra-810903252/ from supplied resume. GitHub from task. Phone deliberately unnecessary for portfolio contact; not published.
@@ -41,14 +41,20 @@ Email yajeshstan@gmail.com and LinkedIn https://www.linkedin.com/in/yajesh-chand
 ## Additional selected projects
 - MatBot successfully cloned at the supplied URL despite omission from the profile API listing. README, requirements, server/app.py, Embed-all/embed_pdf.py, and Streamlit main.py confirm Mistral-7B, BAAI/bge, Chroma, LangChain and retrieval. May 3–5, 2025 author commits match the resume. Include; no live URL verified. Repository screenshots available; page_1.png inspected and selected. No user database or credentials copied.
 - Autonomous-typing: full README, ROS package structure, yolo_seg.py, keyboard_typing.py, multicontroller.py and stereo_vision sources inspected. January 2025 author commits confirm work. Include as robotic manipulation prototype, with ROS (not ROS2 for this source), YOLOv8, OpenCV, Pinocchio, Gazebo. Resume supports Team Deimos association. Generic keyboard textures and robot meshes are not suitable screenshots.
-- Final selection: IndexIt, Tempest, BERT price prediction, MatBot, robotic manipulation (five projects). Motor monitor remains excluded from final selection in favor of deeper work.
+- Current selection: IndexIt, Tempest, BERT price prediction, and MatBot (four projects). The user requested removing the robotic manipulation card and linking Team Deimos in experience. Motor monitor remains excluded from final selection in favor of deeper work.
 - Achievements: show FrostHack 2025 and HCL Tech Hackathon first places as supplied in resume; omit prize amounts, team counts, and undated event year. These are user-attested, not independently verified.
 
 ## Asset review
 MatBot page_1.png and BERT training_metrics.png were visually inspected and copied unchanged from repository documentation. They are repository illustrations, not newly reproduced experimental results. No project code, datasets, keys, or user databases are included in public/.
 
+Project image additions on 19 October 2026:
+- The first set of diagram/screenshot covers was replaced after the user's visual feedback. Current covers are `indexit.svg`, `tempest.svg`, `price-prediction.svg`, and `matbot.svg`: original decorative vector artwork with matching backgrounds, dimensions, and restrained accents. There is no small embedded copy; SVG descriptions identify the images as conceptual, not application screenshots or measured results.
+- Original MatBot and BERT images are retained unchanged but no longer used as card covers.
+- The robotics card and its added keyboard image were removed at the user's request. Robotics remains in the existing Team Deimos experience description; the experience now visibly links to the team's GitHub organization.
+- Source and demo links moved below card content so they no longer obscure the images.
+
 ## Public availability
-Unauthenticated HTTP and GitHub API checks both returned 404 for Tempest and MatBot, despite successful Git clones in this environment. Public availability is not established; evidence from these two clones cannot currently be reproduced by an unauthenticated visitor. Resume supports project attribution. Their source buttons and clickable card links are hidden to avoid dead public links. Restore href and Source entries only when public URLs are confirmed. LinkedIn returned automated-access status 999; retained the user-confirmed resume URL. Other rendered HTTPS destinations returned 200, including all three public project sources and both demo landing pages (video playback/access not verified).
+Unauthenticated HTTP and GitHub API checks originally returned 404 for Tempest and MatBot, despite successful Git clones in this environment. Public availability is not established; evidence from these two clones cannot currently be reproduced by an unauthenticated visitor. Resume supports project attribution. On 19 October 2026 the user explicitly confirmed https://github.com/Prabhat-Kr-Sahu/tempest_local_guard and requested its source link; restored Tempest's source button and card link. The user subsequently confirmed https://github.com/Yajeshchandra/matbot; its source button and card link are restored as requested. LinkedIn returned automated-access status 999; retained the user-confirmed resume URL. Other rendered HTTPS destinations returned 200 during the original audit, including all three public project sources and both demo landing pages (video playback/access not verified).
 
 ## Inspected revisions
 - IndexIt: 70d4b1e4f7237ab49384b0b1b86849a6d662bf44
@@ -69,3 +75,10 @@ Added locally hosted organization assets on 9 October 2026. Original proportions
 
 ## Personal interests
 User confirmed photography, love for Fujifilm, and motorcycles. Added a small personal line below the hero introduction; no camera ownership or specific riding history assumed. Hero and About copy shortened.
+
+## User corrections: 19 October 2026
+- FrostHack 2025: first place, linked to https://github.com/Yajeshchandra/TORTBOT. The repository README describes a FrostHack 2025 computer-vision localization submission; the placement is user-attested.
+- HCL Hackathon: first place with ZeroBlur, linked to https://github.com/astrogeekdk/ZeroBlur. Repository documentation supports the blur detection/correction and on-device ML description; the placement is user-attested. No event year supplied.
+- ARC 2026: cleared Round 1 with Team Deimos, linked to https://github.com/Team-Deimos-IIT-Mandi/. Result and year supplied by the user.
+- Inter IIT Tech Meet 13.0: participation confirmed by the user, linked to https://github.com/Yajeshchandra/InterIIT-TechMeet-13.0. The inspected README supports PX4/Gazebo UAV simulation; no placement or individual ownership claimed.
+- IndexIt hosting deferred at the user's request. Added an empty indexitLiveUrl field for the eventual public URL; no live deployment or live-demo link claimed.

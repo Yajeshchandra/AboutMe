@@ -13,7 +13,7 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
 
   if (!src || imageError) {
-    return <div className="w-full h-48 bg-muted flex flex-col items-center justify-center gap-2 p-6 text-center"><span className="text-sm font-medium text-muted-foreground">{alt}</span><span className="text-xs text-muted-foreground">Project preview</span></div>;
+    return <div className="w-full aspect-[5/3] bg-muted flex flex-col items-center justify-center gap-2 p-6 text-center"><span className="text-sm font-medium text-muted-foreground">{alt}</span><span className="text-xs text-muted-foreground">Project preview</span></div>;
   }
 
   return (
@@ -21,7 +21,7 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
       width={640} height={384} sizes="(max-width: 640px) 100vw, 300px"
       src={src}
       alt={alt}
-      className="w-full h-48 object-contain bg-muted"
+      className="w-full aspect-[5/3] h-auto object-cover bg-muted"
       onError={() => setImageError(true)}
     />
   );
@@ -77,35 +77,14 @@ export function ProjectCard({
               loop
               muted
               playsInline
-              className="w-full h-48 object-cover"
+              className="w-full aspect-[5/3] object-cover"
             />
           ) : image ? (
             <ProjectImage src={image} alt={title} />
           ) : (
-            <div className="w-full h-48 bg-muted flex items-center justify-center p-6 text-center"><span className="text-sm font-medium text-muted-foreground">{title}</span></div>
+            <div className="w-full aspect-[5/3] bg-muted flex items-center justify-center p-6 text-center"><span className="text-sm font-medium text-muted-foreground">{title}</span></div>
           )}
         </MediaLink>
-        {links && links.length > 0 && (
-          <div className="absolute top-2 right-2 flex flex-wrap gap-2">
-            {links.map((link, idx) => (
-              <Link
-                href={link.href}
-                key={idx}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Badge
-                  className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90"
-                  variant="default"
-                >
-                  {link.icon}
-                  {link.type}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        )}
       </div>
       <div className="p-6 flex flex-col gap-3 flex-1">
         <div className="flex items-start justify-between gap-2">
@@ -136,6 +115,23 @@ export function ProjectCard({
               >
                 {tag}
               </Badge>
+            ))}
+          </div>
+        )}
+        {links && links.length > 0 && (
+          <div className="flex flex-wrap gap-3 border-t border-border pt-3 mt-1">
+            {links.map((link) => (
+              <Link
+                key={link.type + link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 py-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {link.icon}
+                {link.type}
+                <ArrowUpRight className="size-3" aria-hidden />
+              </Link>
             ))}
           </div>
         )}
