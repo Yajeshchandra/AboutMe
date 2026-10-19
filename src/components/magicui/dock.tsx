@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, type MotionValue, useMotionValue, useSpring, useTransform } from "motion/react";
+import { motion, type MotionValue, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
 import { createContext, useContext, useRef, type ReactNode } from "react";
 
 interface DockProps {
@@ -32,10 +32,11 @@ interface DockContextValue {
 const DockContext = createContext<DockContextValue | null>(null);
 
 const Dock = ({ className, children, magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DISTANCE }: DockProps) => {
+  const reduceMotion = useReducedMotion();
   const mouseX = useMotionValue(Infinity);
 
   return (
-    <DockContext.Provider value={{ mouseX, magnification, distance }}>
+    <DockContext.Provider value={{ mouseX, magnification: reduceMotion ? BASE_SIZE : magnification, distance }}>
       <motion.div
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
@@ -51,11 +52,9 @@ const DockIcon = ({ className, children }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const context = useContext(DockContext);
 
-  if (!context) {
-    throw new Error("DockIcon must be used within a Dock component");
-  }
 
-  const { mouseX, magnification, distance } = context;
+
+  const { mouseX, magnification, distance } = context!;
 
   const distanceCalc = useTransform(mouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };

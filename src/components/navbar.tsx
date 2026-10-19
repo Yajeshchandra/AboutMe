@@ -7,19 +7,22 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { NotebookIcon } from "lucide-react";
+import { allPosts } from "content-collections";
 import { DATA } from "@/data/resume";
 
 export default function Navbar() {
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30">
       <Dock className="z-50 pointer-events-auto relative h-14 p-2 w-fit mx-auto flex gap-2 border bg-card/90 backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5">
-        {DATA.navbar.map((item) => {
+        {[...DATA.navbar, ...(DATA.blogEnabled && allPosts.length > 0 ? [{href: "/blog", icon: NotebookIcon, label: "Blog"}] : [])].map((item) => {
           const isExternal = item.href.startsWith("http");
           return (
             <Tooltip key={item.href}>
               <TooltipTrigger asChild>
                 <a
                   href={item.href}
+                  aria-label={item.label}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener noreferrer" : undefined}
                 >
@@ -44,7 +47,7 @@ export default function Navbar() {
           className="h-2/3 m-auto w-px bg-border"
         />
         {Object.entries(DATA.contact.social)
-          .filter(([_, social]) => social.navbar)
+          .filter(([, social]) => social.navbar && social.url)
           .map(([name, social], index) => {
             const isExternal = social.url.startsWith("http");
             const IconComponent = social.icon;
@@ -53,6 +56,7 @@ export default function Navbar() {
                 <TooltipTrigger asChild>
                   <a
                     href={social.url}
+                    aria-label={social.name}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
                   >

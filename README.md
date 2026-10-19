@@ -1,47 +1,53 @@
-<div align="center">
-<img alt="Portfolio" src="https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455" width="90%">
-</div>
+# Yajesh Chandra — Portfolio
 
-# Portfolio [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdillionverma%2Fportfolio)
+Personalized from the actual [Magic UI portfolio](https://github.com/magicuidesign/portfolio), upstream commit 5ef12e4c8bd0de3e22e89c2181ee77a35925ec8b. Original MIT license retained. This is a Next.js App Router project using React, TypeScript, Tailwind, shadcn/ui, Motion, and Content Collections. See CONTENT_AUDIT.md for evidence and attribution.
 
-Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://magicui.design/), deployed on Vercel.
+## Local development
 
-# Features
+Use Node.js 22 LTS and npm. From this directory:
 
-- Setup only takes a few minutes by editing the [single config file](./src/data/resume.tsx)
-- Built using Next.js 14, React, Typescript, Shadcn/UI, TailwindCSS, Framer Motion, Magic UI
-- Includes a blog
-- Responsive for different devices
-- Optimized for Next.js and Vercel
+```sh
+npm ci
+npm run dev -- --hostname 127.0.0.1
+```
 
-# Getting Started Locally
+Open http://localhost:3000. If that port is busy, use the port printed by Next.js.
 
-1. Clone this repository to your local machine:
+```sh
+npm run lint
+npm run typecheck
+npm run build
+npm start -- --hostname 127.0.0.1
+```
 
-   ```bash
-   git clone https://github.com/dillionverma/portfolio
-   ```
+Use package-lock.json as the active lockfile. The upstream pnpm lock is removed to avoid competing dependency resolutions. Next.js and matching ESLint config were updated within major 16 because the original 16.1.1 had known security advisories. No major framework upgrade was introduced.
 
-2. Move to the cloned directory
+## Update content
 
-   ```bash
-   cd portfolio
-   ```
+Edit src/data/resume.tsx. The Portfolio interface checks work, education, skill groups, projects, social profiles and achievements. All personal copy is centralized there.
 
-3. Install dependencies:
+- Set avatarUrl to a local photo in public/; empty means initials. Adjust avatarCrop for the CSS crop. The supplied original photo is preserved and served through Next.js image optimization.
+- Set resumeUrl near the top of the config to a PDF path or confirmed URL; empty means hidden.
+- Confirm or change email and LinkedIn in contact. Empty social URLs are hidden.
+- Add project images under public/projects/ and update image. Missing media uses a consistent neutral placeholder.
+- Set hackathons to an empty array to hide Achievements. The original component is retained under its upstream filename.
+- Blog routes, MDX rendering and pagination remain. Add authored .mdx files to content/ with title, publishedAt, summary metadata (see content-collections.ts); set blogEnabled to true. The dock shows Blog only when posts exist. No sample articles are published.
 
-   ```bash
-   pnpm install
-   ```
+## Vercel deployment
 
-4. Start the local Server:
+1. Push this customized source to a repository you own. The cloned origin points to Magic UI; change origin before pushing. Do not push .research, .validation, .env files, or node_modules.
+2. Import your repository in Vercel and select the Next.js preset, Node.js 22, install command npm ci, and build command npm run build.
+3. Set NEXT_PUBLIC_SITE_URL to your final HTTPS portfolio origin in Vercel environment variables. The variable is public and must not contain secrets.
+4. Deploy, then verify the home page, theme toggle, project/contact links, /opengraph-image, /robots.txt and /sitemap.xml. Redeploy after changing the domain variable.
 
-   ```bash
-   pnpm dev
-   ```
+Without NEXT_PUBLIC_SITE_URL, metadata uses localhost and robots disallows crawling; sitemap is empty. No deployment or account changes have been made by this task.
 
-5. Open the [Config file](./src/data/resume.tsx) and make changes
+## Content still needed
 
-# License
+Public resume PDF/URL and final domain. Confirm lead-only Team Deimos dates if you want a separate leadership interval. CONTENT_AUDIT.md records conflicting/unverified metrics that were omitted from public copy.
 
-Licensed under the [MIT license](https://github.com/dillionverma/portfolio/blob/main/LICENSE.md).
+## Verification
+
+See VALIDATION.md for executed checks and remaining browser-only checks. The compact original layout, dock, cards, themes and motion are retained; reduced-motion preferences and keyboard labels were added. Repository media is used for MatBot and BERT; other cards use placeholders.
+
+Tempest and MatBot source links are hidden because unauthenticated GitHub checks return 404. Restore their href and links entries when public source URLs are available. LinkedIn requires a manual visit to verify because it blocks automated checks.

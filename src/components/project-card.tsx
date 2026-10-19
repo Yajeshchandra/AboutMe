@@ -1,10 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { useReducedMotion } from "motion/react";
 import { useState } from "react";
 import Markdown from "react-markdown";
 
@@ -12,17 +13,22 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
 
   if (!src || imageError) {
-    return <div className="w-full h-48 bg-muted" />;
+    return <div className="w-full h-48 bg-muted flex flex-col items-center justify-center gap-2 p-6 text-center"><span className="text-sm font-medium text-muted-foreground">{alt}</span><span className="text-xs text-muted-foreground">Project preview</span></div>;
   }
 
   return (
-    <img
+    <Image
+      width={640} height={384} sizes="(max-width: 640px) 100vw, 300px"
       src={src}
       alt={alt}
-      className="w-full h-48 object-cover"
+      className="w-full h-48 object-contain bg-muted"
       onError={() => setImageError(true)}
     />
   );
+}
+
+function MediaLink({href, title, children}: {href?: string; title: string; children: React.ReactNode}) {
+  return href ? <Link href={href} target="_blank" rel="noopener noreferrer" className="block" aria-label={`View ${title} source`}>{children}</Link> : <div>{children}</div>;
 }
 
 interface Props {
@@ -48,30 +54,26 @@ export function ProjectCard({
   description,
   dates,
   tags,
-  link,
   image,
   video,
   links,
   className,
 }: Props) {
+  const reduceMotion = useReducedMotion();
   return (
     <div
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
+        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 hover:ring-muted transition-all duration-200",
         className
       )}
     >
       <div className="relative shrink-0">
-        <Link
-          href={href || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-        >
+        <MediaLink href={href} title={title}>
           {video ? (
             <video
               src={video}
-              autoPlay
+              autoPlay={!reduceMotion}
+              controls={!!reduceMotion}
               loop
               muted
               playsInline
@@ -80,9 +82,9 @@ export function ProjectCard({
           ) : image ? (
             <ProjectImage src={image} alt={title} />
           ) : (
-            <div className="w-full h-48 bg-muted" />
+            <div className="w-full h-48 bg-muted flex items-center justify-center p-6 text-center"><span className="text-sm font-medium text-muted-foreground">{title}</span></div>
           )}
-        </Link>
+        </MediaLink>
         {links && links.length > 0 && (
           <div className="absolute top-2 right-2 flex flex-wrap gap-2">
             {links.map((link, idx) => (
@@ -109,17 +111,17 @@ export function ProjectCard({
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             <h3 className="font-semibold">{title}</h3>
-            <time className="text-xs text-muted-foreground">{dates}</time>
+            {dates && <span className="text-xs text-muted-foreground">{dates}</span>}
           </div>
-          <Link
-            href={href || "#"}
+          {href && <Link
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
             aria-label={`Open ${title}`}
           >
             <ArrowUpRight className="h-4 w-4" aria-hidden />
-          </Link>
+          </Link>}
         </div>
         <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
           <Markdown>{description}</Markdown>

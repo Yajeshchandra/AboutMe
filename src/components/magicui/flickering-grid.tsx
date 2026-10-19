@@ -1,5 +1,6 @@
 "use client"
 
+import { useReducedMotion } from "motion/react"
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 import { cn } from "@/lib/utils"
@@ -26,6 +27,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   maxOpacity = 0.3,
   ...props
 }) => {
+  const reduceMotion = useReducedMotion()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isInView, setIsInView] = useState(false)
@@ -192,7 +194,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
         gridParams.squares,
         gridParams.dpr
       )
-      animationFrameId = requestAnimationFrame(animate)
+      if (!reduceMotion) animationFrameId = requestAnimationFrame(animate)
     }
 
     const resizeObserver = new ResizeObserver(() => {
@@ -219,7 +221,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       resizeObserver.disconnect()
       intersectionObserver.disconnect()
     }
-  }, [setupCanvas, updateSquares, drawGrid, width, height, isInView])
+  }, [setupCanvas, updateSquares, drawGrid, width, height, isInView, reduceMotion])
 
   return (
     <div

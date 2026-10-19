@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useInView, Variants } from "motion/react";
+import { AnimatePresence, motion, useInView, useReducedMotion, Variants } from "motion/react";
 import { useRef } from "react";
 
 interface BlurFadeProps {
@@ -28,6 +28,7 @@ const BlurFade = ({
   inViewMargin = "-50px",
   blur = "6px",
 }: BlurFadeProps) => {
+  const reduceMotion = useReducedMotion();
   const ref = useRef(null);
   const inViewResult = useInView(ref, {
     once: true,
@@ -43,13 +44,13 @@ const BlurFade = ({
     <AnimatePresence>
       <motion.div
         ref={ref}
-        initial="hidden"
+        initial={reduceMotion ? false : "hidden"}
         animate={isInView ? "visible" : "hidden"}
         exit="hidden"
-        variants={combinedVariants}
+        variants={reduceMotion ? {hidden: {opacity: 1}, visible: {opacity: 1}} : combinedVariants}
         transition={{
-          delay: 0.04 + delay,
-          duration,
+          delay: reduceMotion ? 0 : 0.04 + delay,
+          duration: reduceMotion ? 0 : duration,
           ease: "easeOut",
         }}
         className={className}

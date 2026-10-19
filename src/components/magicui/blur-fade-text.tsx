@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, Variants } from "motion/react";
+import { motion, useReducedMotion, Variants } from "motion/react";
 import { useMemo } from "react";
 
 interface BlurFadeTextProps {
@@ -27,6 +27,7 @@ const BlurFadeText = ({
   yOffset = 8,
   animateByCharacter = false,
 }: BlurFadeTextProps) => {
+  const reduceMotion = useReducedMotion();
   const defaultVariants: Variants = {
     hidden: { y: -yOffset, opacity: 0, filter: "blur(8px)" },
     visible: { y: 0, opacity: 1, filter: "blur(0px)" },
@@ -34,9 +35,11 @@ const BlurFadeText = ({
   const combinedVariants = variant || defaultVariants;
   const characters = useMemo(() => Array.from(text), [text]);
 
+  if (reduceMotion) return <span className={className}>{text}</span>;
+
   if (animateByCharacter) {
     return (
-      <div className="flex">
+      <span className="flex">
         {characters.map((char, i) => {
           const charVariants: Variants = {
             hidden: { y: -yOffset, opacity: 0, filter: "blur(8px)" },
@@ -60,12 +63,12 @@ const BlurFadeText = ({
             </motion.span>
           );
         })}
-      </div>
+      </span>
     );
   }
 
   return (
-    <div className="flex">
+    <span className="flex">
       <motion.span
         initial="hidden"
         animate="visible"
@@ -79,7 +82,7 @@ const BlurFadeText = ({
       >
         {text}
       </motion.span>
-    </div>
+    </span>
   );
 };
 

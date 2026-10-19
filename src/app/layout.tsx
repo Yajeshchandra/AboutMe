@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     type: "website",
   },
   robots: {
-    index: true,
+    index: Boolean(process.env.NEXT_PUBLIC_SITE_URL),
     follow: true,
     googleBot: {
-      index: true,
+      index: Boolean(process.env.NEXT_PUBLIC_SITE_URL),
       follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
@@ -50,10 +50,7 @@ export const metadata: Metadata = {
     title: `${DATA.name}`,
     card: "summary_large_image",
   },
-  verification: {
-    google: "",
-    yandex: "",
-  },
+  alternates: process.env.NEXT_PUBLIC_SITE_URL ? { canonical: "/" } : undefined,
 };
 
 export default function RootLayout({
@@ -70,7 +67,8 @@ export default function RootLayout({
           geistMono.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-background focus:p-3">Skip to content</a>
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider delayDuration={0}>
             <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
               <FlickeringGrid
