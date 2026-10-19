@@ -17,7 +17,7 @@ interface Portfolio {
 }
 const source = (href: string) => ({ type: "Source", href, icon: <Icons.github className="size-3" /> });
 // Leave unknown links empty: the UI omits them rather than creating broken links.
-const resumeUrl = "";
+const resumeUrl = "/Yajesh_Resume (20).pdf";
 // Add IndexIt's public HTTPS URL after deployment; the live link stays hidden until then.
 const indexitLiveUrl = "";
 export const DATA: Portfolio = {
