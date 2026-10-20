@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import CommandPalette from "@/components/command-palette";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
 const geist = Geist({
@@ -85,6 +86,19 @@ export default function RootLayout({
               {children}
             </div>
             <Navbar />
+            <CommandPalette />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: DATA.name,
+                jobTitle: DATA.role,
+                url: DATA.url,
+                sameAs: Object.values(DATA.contact.social).map((s) => s.url).filter((u) => u.startsWith("http")),
+                alumniOf: DATA.education.map((e) => ({ "@type": "CollegeOrUniversity", name: e.school })),
+              }) }}
+            />
           </TooltipProvider>
         </ThemeProvider>
       </body>

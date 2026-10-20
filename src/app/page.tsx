@@ -11,6 +11,7 @@ import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
+import PhotoGallery from "@/components/section/photo-gallery";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -23,26 +24,33 @@ export default function Page() {
             <div className="gap-2 flex flex-col order-2 md:order-1">
               <h1><BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
+                className="text-4xl font-semibold tracking-tighter sm:text-5xl lg:text-6xl"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name}`}
               /></h1>
               <BlurFadeText
-                className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
+                className="text-muted-foreground max-w-[600px] text-lg lg:text-xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
               <BlurFade delay={BLUR_FADE_DELAY * 2}>
-                <p className="mt-2 max-w-sm text-xs leading-relaxed text-muted-foreground sm:text-sm">{DATA.personalNote}</p>
+                <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">{DATA.personalNote}</p>
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
+              <Avatar className="size-28 md:size-40 border rounded-full shadow-lg ring-4 ring-muted">
                 {DATA.avatarUrl ? <Image alt={DATA.name} src={DATA.avatarUrl} fill sizes="576px" loading="eager" className="object-cover" style={DATA.avatarCrop} /> : <AvatarFallback>{DATA.initials}</AvatarFallback>}
               </Avatar>
             </BlurFade>
           </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+          <p className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm text-muted-foreground">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-500 opacity-75 motion-reduce:animate-none" />
+              <span className="relative inline-flex size-2 rounded-full bg-green-500" />
+            </span>
+            Open to opportunities · graduating 2027
+          </p>
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-base">
             {Object.values(DATA.contact.social).filter(social => social.url).map(social => <Link key={social.name} href={social.url} className="text-muted-foreground hover:text-foreground underline underline-offset-4" {...(social.url.startsWith("http") ? {target: "_blank", rel: "noopener noreferrer"} : {})}>{social.name}</Link>)}
           </div>
         </div>
@@ -93,7 +101,7 @@ export default function Page() {
                       <img
                         src={education.logoUrl}
                         alt={education.school}
-                        className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain bg-white flex-none"
+                        className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain bg-white flex-none transition-transform duration-200 group-hover:scale-110"
                       />
                     ) : (
                       <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
@@ -129,7 +137,7 @@ export default function Page() {
               <div key={group.category} className="space-y-2">
                 <h3 className="text-xs font-medium text-muted-foreground">{group.category}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {group.items.map((skill) => <span key={skill} className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center text-foreground text-sm font-medium">{skill}</span>)}
+                  {group.items.map((skill) => <span key={skill} className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center text-foreground text-sm font-medium transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105 hover:bg-muted">{skill}</span>)}
                 </div>
               </div>
             ))}
@@ -144,6 +152,11 @@ export default function Page() {
       {DATA.hackathons.length > 0 && <section id="achievements">
         <BlurFade delay={BLUR_FADE_DELAY * 13}>
           <HackathonsSection />
+        </BlurFade>
+      </section>}
+      {DATA.photos.length > 0 && <section id="photos">
+        <BlurFade delay={BLUR_FADE_DELAY * 15}>
+          <PhotoGallery />
         </BlurFade>
       </section>}
       <section id="contact">

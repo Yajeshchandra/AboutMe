@@ -124,8 +124,7 @@ export function ProjectCard({
               <Link
                 key={link.type + link.href}
                 href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="inline-flex items-center gap-1.5 py-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {link.icon}
